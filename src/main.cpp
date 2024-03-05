@@ -2,8 +2,8 @@
 #include <iostream>
 
 int main(){
-    std::cout << "\r\n\r\n";
-    std::cout << "Hello and welcome to the casino!\n";
+    std::cout << std::endl << std::endl << std::endl << std::endl;
+    std::cout << "Hello and welcome to the casino" << std::endl;
 
     start();
 

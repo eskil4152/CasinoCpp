@@ -7,7 +7,7 @@
 std::string name() {
     std::string name;
 
-    std::cout << "Please enter your name: \n";
+    std::cout << "Please enter your name:" << std::endl;
     std::getline(std::cin, name);
 
     return name;

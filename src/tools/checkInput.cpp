@@ -6,8 +6,11 @@
 using namespace std;
 
 int* checkAction(){
-    cout << "What do you want to do now? \n";
-    cout << "1: Play\n" << "2: Check Money\n" << "3: Check record\n" << "4: Leave\n";
+    cout << "What do you want to do now?" << endl;;
+    cout << "1: Play" << endl; 
+    cout << "2: Check Money" << endl;
+    cout << "3: Check record" << endl; 
+    cout << "4: Leave" << endl;
 
     string s;
     int* res = new int;
@@ -33,13 +36,13 @@ int* gameTypeInput(){
         
         if (isAllDigits && !gameSelectionString.empty()) {
             *result = stoi(gameSelectionString);
-            if (*result == (1 || 2 || 3)) {
+            if (*result >= 1 && *result <= 4) {
                 return result;
             } else {
-                cout << "Please enter 1, 2 or 3\n";
+                cout << "Please enter 1, 2, 3 or 4" << endl;;
             }
         } else {
-            cout << "Please enter a valid number\n";
+            cout << "Please enter a valid number" << endl;;
         }
     }
 }
