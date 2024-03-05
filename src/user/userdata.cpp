@@ -10,8 +10,8 @@ std::string getName(){
     return user.getName();
 }
 
-void setName(std::string name){
-    user.setName(name);
+void setName(std::string* name){
+    user.setName(*name);
 }
 
 double* getMoney(){
@@ -21,6 +21,6 @@ double* getMoney(){
     return money;
 }
 
-void setMoney(double* changePtr){
+void changeMoney(double* changePtr){
     user.changeMoney(*changePtr);
 }

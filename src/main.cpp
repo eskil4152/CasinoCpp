@@ -9,6 +9,7 @@ int main(){
     std::cout << "Hello and welcome to the casino" << std::endl;
 
     setName(nameInput());
+
     start();
 
     return 0;

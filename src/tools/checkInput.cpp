@@ -52,7 +52,7 @@ string* nameInput(){
     cout << "What is your name?" << endl;
 
     while(1){
-        string temp = NULL;
+        string temp;
         getline(cin, temp);
 
         if (temp.empty()) {

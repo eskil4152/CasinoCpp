@@ -1,6 +1,5 @@
 #include "start.h"
 #include "entities/user.h"
-#include "user/name.h"
 #include "tools/checkInput.h"
 #include "actions/play.h"
 
