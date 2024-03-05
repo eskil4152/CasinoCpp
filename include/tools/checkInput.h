@@ -9,4 +9,6 @@ int* gameTypeInput();
 
 std::string* nameInput();
 
+bool keepPlayingInput();
+
 #endif

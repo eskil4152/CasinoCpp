@@ -25,8 +25,7 @@ int* checkAction(){
             }
         }
 
-        if (isAllDigits && !actionSelectionString.empty())
-        {
+        if (isAllDigits && !actionSelectionString.empty()){
             *result = stoi(actionSelectionString);
             if (*result >= 1 && *result <= 4) {
                 return result;
@@ -81,4 +80,24 @@ string* nameInput(){
             return name;
         }
     }
+}
+
+bool keepPlayingInput(){
+    char choice;
+    bool validInput = false;
+
+    do {
+        cout << "Keep playing? y/n" << endl;
+        cin >> choice;
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        if (choice == 'y' || choice == 'n'){
+            validInput = true;
+        } else {
+            cout << "Invalid input. Enter 'y' or 'n'" << endl;
+        }
+    } while (!validInput);
+    
+    return choice == 'y';
 }

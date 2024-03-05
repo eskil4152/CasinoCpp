@@ -26,6 +26,7 @@ void changeMoney(double change){
     *changePtr = change;
     
     user.changeMoney(*changePtr);
+    delete changePtr;
 }
 
 double* getSpent() {

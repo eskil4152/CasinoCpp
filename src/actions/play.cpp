@@ -3,6 +3,8 @@
 #include "actions/play.h"
 #include "tools/checkInput.h"
 
+#include "games/slots/slots.h"
+
 using namespace std;
 void play(){
     cout.clear();
@@ -21,7 +23,7 @@ void play(){
         cout << "Horses" << endl;;
         break;
     case 3:
-        cout << "Slots" << endl;;
+        slots();
         break;
     default:
         break;
