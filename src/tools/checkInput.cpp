@@ -4,6 +4,18 @@
 #include "tools/checkInput.h"
 
 using namespace std;
+
+int* checkAction(){
+    cout << "What do you want to do now? \n";
+    cout << "1: Play\n" << "2: Check Money\n" << "3: Check record\n" << "4: Leave\n";
+
+    string s;
+    int* res = new int;
+    getline(cin, s);
+    *res = stoi(s);
+    return res;
+}
+
 int* gameTypeInput(){
     string gameSelectionString;
     int* result = new int;
@@ -21,7 +33,11 @@ int* gameTypeInput(){
         
         if (isAllDigits && !gameSelectionString.empty()) {
             *result = stoi(gameSelectionString);
-            return result;
+            if (*result == (1 || 2 || 3)) {
+                return result;
+            } else {
+                cout << "Please enter 1, 2 or 3\n";
+            }
         } else {
             cout << "Please enter a valid number\n";
         }
