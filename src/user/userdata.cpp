@@ -1,5 +1,5 @@
-#include "entities/user.h"
 #include "user/userdata.h"
+#include "entities/user.h"
 
 #include <string>
 #include <iostream>
@@ -10,9 +10,8 @@ std::string getName(){
     return user.getName();
 }
 
-void setName(std::string* name){
-    user.setName(*name);
-    delete name;
+void setName(std::string name){
+    user.setName(name);
 }
 
 double* getMoney(){
@@ -23,6 +22,5 @@ double* getMoney(){
 }
 
 void setMoney(double* changePtr){
-    double* oldMoney = getMoney();
-    double newMoney = *oldMoney + *changePtr;
+    user.changeMoney(*changePtr);
 }

@@ -11,12 +11,12 @@ private:
     double earned;
 
 public:
-    User(); // Constructor
+    User();
     void setName(const std::string& newName);
     std::string getName() const;
 
-    void setMoney(const double& newMoney);
+    void changeMoney(const double& change);
     double getMoney() const;
 };
 
-#endif // USER_H
+#endif

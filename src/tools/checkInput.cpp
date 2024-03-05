@@ -5,7 +5,6 @@
 
 using namespace std;
 
-// TODO fix
 int* checkAction(){
     cout << "What do you want to do now?" << endl;;
     cout << "1: Play" << endl; 
