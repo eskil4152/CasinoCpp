@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// TODO fix
 int* checkAction(){
     cout << "What do you want to do now?" << endl;;
     cout << "1: Play" << endl; 
@@ -43,6 +44,23 @@ int* gameTypeInput(){
             }
         } else {
             cout << "Please enter a valid number" << endl;;
+        }
+    }
+}
+
+string* nameInput(){
+    string* name = new string;
+    cout << "What is your name?" << endl;
+
+    while(1){
+        string temp = NULL;
+        getline(cin, temp);
+
+        if (temp.empty()) {
+            cout << "Enter a valid string" << endl;
+        } else {
+            *name = temp;
+            return name;
         }
     }
 }

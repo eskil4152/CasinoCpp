@@ -1,16 +1,16 @@
 #include "start.h"
 #include "entities/user.h"
-#include "tools/name.h"
+#include "user/name.h"
 #include "tools/checkInput.h"
 #include "actions/play.h"
+
+#include "user/userdata.h"
 
 #include <iostream>
 
 using namespace std;
 void start() {
-    User user;
-    user.setName(name());
-    user.setMoney(1000);
+    setName(nameInput());
 
     bool playing = true;
 
