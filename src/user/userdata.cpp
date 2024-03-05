@@ -21,7 +21,10 @@ double* getMoney(){
     return money;
 }
 
-void changeMoney(double* changePtr){
+void changeMoney(double change){
+    double* changePtr = new double;
+    *changePtr = change;
+    
     user.changeMoney(*changePtr);
 }
 

@@ -8,7 +8,7 @@ std::string getName();
 void setName(std::string* name);
 
 double* getMoney();
-void changeMoney(double* changePtr);
+void changeMoney(double change);
 
 double* getSpent();
 void updateSpent(double* spentPtr);
