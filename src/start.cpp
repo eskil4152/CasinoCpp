@@ -1,7 +1,9 @@
 #include "start.h"
 #include "entities/user.h"
 #include "tools/checkInput.h"
+
 #include "actions/play.h"
+#include "actions/money.h"
 
 #include "user/userdata.h"
 
@@ -16,11 +18,12 @@ void start() {
 
         switch (*choice){
         case 1:
-            cout << "Chose 1, Play" << endl;
+            cout << "\r\n\r\n\r\n\r\n";
             play();
             break;
         case 2:
-            cout << "Chose 2, Check Money" << endl;
+            cout << "\r\n\r\n\r\n\r\n";
+            money();
             break;
         case 3:
             cout << "Chose 3, Check Record" << endl;

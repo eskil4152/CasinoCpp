@@ -12,19 +12,38 @@ int* checkAction(){
     cout << "3: Check record" << endl; 
     cout << "4: Leave" << endl;
 
-    string s;
-    int* res = new int;
-    getline(cin, s);
-    *res = stoi(s);
-    return res;
+    string actionSelectionString;
+    int* result = new int;
+
+    while (1){
+        getline(cin, actionSelectionString);
+
+        bool isAllDigits = true;
+        for (char c : actionSelectionString){
+            if (!isdigit(c)) {
+                isAllDigits = false;
+            }
+        }
+
+        if (isAllDigits && !actionSelectionString.empty())
+        {
+            *result = stoi(actionSelectionString);
+            if (*result >= 1 && *result <= 4) {
+                return result;
+            } else {
+                cout << "Please enter 1, 2, 3 or 4" << endl;
+            }
+        } else {
+            cout << "Please enter a valid number" << endl;
+        }
+    }
 }
 
 int* gameTypeInput(){
     string gameSelectionString;
     int* result = new int;
 
-    while (1)
-    {
+    while (1){
         getline(cin, gameSelectionString);
 
         bool isAllDigits = true;
@@ -39,10 +58,10 @@ int* gameTypeInput(){
             if (*result >= 1 && *result <= 4) {
                 return result;
             } else {
-                cout << "Please enter 1, 2, 3 or 4" << endl;;
+                cout << "Please enter 1, 2, 3 or 4" << endl;
             }
         } else {
-            cout << "Please enter a valid number" << endl;;
+            cout << "Please enter a valid number" << endl;
         }
     }
 }
