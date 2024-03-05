@@ -24,3 +24,25 @@ double* getMoney(){
 void changeMoney(double* changePtr){
     user.changeMoney(*changePtr);
 }
+
+double* getSpent() {
+    double* spent = new double;
+    *spent = user.getSpent();
+
+    return spent;
+}
+
+void updateSpent(double* spentPtr){
+    user.changeSpent(*spentPtr);
+}
+
+double* getEarned(){
+    double* earned = new double;
+    *earned = user.getEarned();
+
+    return earned;
+}
+
+void updateEarned(double* earnedPtr){
+    user.changeEarned(*earnedPtr);
+}

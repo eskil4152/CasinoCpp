@@ -6,7 +6,14 @@
 
 std::string getName();
 void setName(std::string* name);
+
 double* getMoney();
 void changeMoney(double* changePtr);
+
+double* getSpent();
+void updateSpend(double* spentPtr);
+
+double* getEarned();
+void updateEarned(double* earnedPtr);
 
 #endif

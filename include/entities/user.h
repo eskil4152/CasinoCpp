@@ -12,11 +12,18 @@ private:
 
 public:
     User();
-    void setName(const std::string& newName);
-    std::string getName() const;
 
-    void changeMoney(const double& change);
+    std::string getName() const;
+    void setName(const std::string& newName);
+
     double getMoney() const;
+    void changeMoney(const double& change);
+
+    double getSpent() const;
+    void changeSpent(const double& change);
+
+    double getEarned() const;
+    void changeEarned(const double& change);
 };
 
 #endif
