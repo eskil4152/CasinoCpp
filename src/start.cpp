@@ -4,6 +4,7 @@
 
 #include "actions/play.h"
 #include "actions/money.h"
+#include "actions/record.h"
 
 #include "user/userdata.h"
 
@@ -26,7 +27,8 @@ void start() {
             money();
             break;
         case 3:
-            cout << "Chose 3, Check Record" << endl;
+            cout << "\r\n\r\n\r\n\r\n";
+            record();
             break;
         case 4:
             cout << "Hope you enjoyed your stay, goodbye!" << endl;

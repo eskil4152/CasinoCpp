@@ -11,7 +11,7 @@ double* getMoney();
 void changeMoney(double* changePtr);
 
 double* getSpent();
-void updateSpend(double* spentPtr);
+void updateSpent(double* spentPtr);
 
 double* getEarned();
 void updateEarned(double* earnedPtr);
