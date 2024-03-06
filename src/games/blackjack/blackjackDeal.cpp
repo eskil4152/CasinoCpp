@@ -7,7 +7,8 @@
 using namespace std;
 BlackjackResult deal(){
     BlackjackDeck deck;
-    BlackjackResult result;
+
+    bool draw = false;
 
     deck.shuffle();
 
@@ -44,10 +45,60 @@ BlackjackResult deal(){
         return BLACKJACK;
     } else if (dealerCards[0].rank == 10 || dealerCards[0].rank == ACE) {
         cout << "Dealer might have BJ, you do not" << endl;
-        cout << "Insurance" << endl;
+        cout << "Insurance not implemented" << endl;
+
+        if (dealerSum == 21){
+            return LOSE;
+        }
     }
 
-    return result;
+    char input;
+    cout << "Do you want to hit (h) or stand(s)?" << endl;
+    cin >> input;
+
+    if (input == 'h'){
+        draw = true;
+    }
+
+    while (draw && (calculateHandValue(playerCards) < 21)){
+        card newCard = deck.drawCard();
+        playerCards.push_back(deck.drawCard());
+
+        cout << "You drew a " << newCard.rank << " of " << suitToString(newCard.suit) << endl;
+        cout << "Your current hand value: " << calculateHandValue(playerCards) << endl;
+
+        cin >> input;
+
+        if (input != 'y'){
+            draw = false;
+        }
+    }
+
+    if (calculateHandValue(playerCards) > 21){
+        cout << "You busted" << endl;
+        return LOSE;
+    }
+
+    while (calculateHandValue(dealerCards) < 17){
+        card newCard = deck.drawCard();
+        dealerCards.push_back(newCard);
+
+        cout << "Dealer drew a " << newCard.rank << " of " << suitToString(newCard.suit) << endl;
+        cout << "Dealer has: " << calculateHandValue(dealerCards) << endl;
+    }
+
+    if (calculateHandValue(dealerCards) > 21){
+        cout << "Dealer busted, you win" << endl;
+        return WIN;
+    } else if (calculateHandValue(dealerCards) > calculateHandValue(playerCards)){
+        cout << "You lose" << endl;
+        return LOSE;
+    } else if (calculateHandValue(dealerCards) == calculateHandValue(playerCards)){
+        cout << "Draw" << endl;
+        return PUSH;
+    }
+
+    return WIN;
 }
 
 /*

@@ -2,7 +2,7 @@
 #define BLACKJACK_RESULT
 
 enum BlackjackResult {
-    BLACKJACK, WIN, PUSH
+    BLACKJACK, WIN, PUSH, LOSE
 };
 
 #endif
