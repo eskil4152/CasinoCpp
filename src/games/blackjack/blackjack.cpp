@@ -51,14 +51,15 @@ void cheapBlackjackTable(){
 
         BlackjackResult result = deal();
 
-        if (result.won){
-            if (result.blackjack){
-                updateEarned(bet*2.5);
-                changeMoney(bet*2.5);
-            } else {
-                updateEarned(bet*2);
-                changeMoney(bet*2);
-            }
+        if (result == BLACKJACK){
+            updateEarned(bet*2.5);
+            changeMoney(bet*2.5);
+        } else if (result == WIN) {
+            updateEarned(bet*2);
+            changeMoney(bet*2);
+        } else if (result == PUSH) {
+            updateEarned(bet*1);
+            changeMoney(bet*1);
         }
     
         play = keepPlayingInput();

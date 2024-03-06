@@ -6,7 +6,8 @@
 
 using namespace std;
 BlackjackResult deal(){
-    BlackjackDeck deck; 
+    BlackjackDeck deck;
+    BlackjackResult result;
 
     deck.shuffle();
 
@@ -27,9 +28,17 @@ BlackjackResult deal(){
     int playerSum = playerCards[0].rank + playerCards[1].rank;
     cout << "You currently have " << playerSum << endl;
 
-    BlackjackResult result;
-    result.blackjack = true;
-    result.won = true;
+    if (playerSum == 21 && dealerCards[0].rank != 10 && dealerCards[0].rank != ACE){
+        result = BLACKJACK;
+    }
+
+    if ((dealerCards[0].rank == 10 || dealerCards[0].rank == ACE) && playerSum != 21){
+        cout << "Dealer might have Blackjack, do you want to buy insurance?" << endl;
+    }
+
+    if ((dealerCards[0].rank == 10 || dealerCards[0].rank == ACE) && playerSum == 21) {
+        cout << "Dealer might have Blackjack, do you want to buy insurance?" << endl;
+    }
 
     return result;
 }
