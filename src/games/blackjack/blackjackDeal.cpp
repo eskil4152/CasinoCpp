@@ -29,15 +29,24 @@ BlackjackResult deal(){
     cout << "You currently have " << playerSum << endl;
 
     if (playerSum == 21 && dealerCards[0].rank != 10 && dealerCards[0].rank != ACE){
-        result = BLACKJACK;
-    }
+        return BLACKJACK;
+    } else if (playerSum == 21 && (dealerCards[0].rank == 10 || dealerCards[0].rank == ACE)) {
+        cout << "You have Blackjack, dealer might also" << endl;
+        cout << "Dealers second card is " << dealerCards[1].rank << " of " << suitToString(dealerCards[1].suit) << endl;
+        
+        if (dealerCards[0].rank == TEN && dealerCards[1].rank == ACE) {
+            cout << "Dealer has Blackjack!" << endl;
+            return PUSH;
+        } else if (dealerCards[0].rank == ACE && dealerCards[1].rank == TEN) {
+            cout << "Dealer has Blackjack!" << endl;
+            return PUSH;
+        }
 
-    if ((dealerCards[0].rank == 10 || dealerCards[0].rank == ACE) && playerSum != 21){
-        cout << "Dealer might have Blackjack, do you want to buy insurance?" << endl;
-    }
-
-    if ((dealerCards[0].rank == 10 || dealerCards[0].rank == ACE) && playerSum == 21) {
-        cout << "Dealer might have Blackjack, do you want to buy insurance?" << endl;
+        cout << "Dealer did not have a blackjack!" << endl;
+        return BLACKJACK;
+    } else if (dealerCards[0].rank == 10 || dealerCards[0].rank == ACE) {
+        cout << "Dealer might have BJ, you do not" << endl;
+        cout << "Insurance" << endl;
     }
 
     return result;
@@ -45,8 +54,6 @@ BlackjackResult deal(){
 
 /*
 TODO
-- dealer draw one
-- dealer draw two
 - if dealer one is Ace or 10, ask safety
 - player draw
 - dealer stops only at 17+
