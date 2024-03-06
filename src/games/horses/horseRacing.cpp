@@ -18,7 +18,6 @@ void horseRacing(){
 
     while (play){
         Horse* horses = create();
-        int totalPoints = 0;
 
         for (size_t i = 0; i < HORSES_COUNT; i++){
             cout << "Horse " << horses[i].name << " has " << horses[i].odds 
@@ -44,7 +43,6 @@ void horseRacing(){
         changeMoney(-bet);
 
         double potentialPayout = bet * selectedHorse.payoutRatio;
-        cout << "If horse " << selectedHorse.name << " wins, you will get $" << potentialPayout << endl; 
 
         if (race(horses, selectedHorse)){
             changeMoney(potentialPayout);
@@ -72,9 +70,10 @@ bool race(Horse* horses, Horse selectedHorse){
             if (horses[i].name == selectedHorse.name){
                 return true;
             }
-            return false;
+            break;
         }
     }
 
+    return false;
     cout << "No winner" << endl;
 }

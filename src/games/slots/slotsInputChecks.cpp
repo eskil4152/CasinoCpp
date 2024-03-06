@@ -6,7 +6,6 @@
 using namespace std;
 int slotsInput(){
     string slotsSelectionString;
-    int result = 0;
 
     while (1){
         getline(cin, slotsSelectionString);
@@ -19,7 +18,7 @@ int slotsInput(){
         }
         
         if (isAllDigits && !slotsSelectionString.empty()) {
-            result = stoi(slotsSelectionString);
+            int result = stoi(slotsSelectionString);
             if (result >= 1 && result <= 3) {
                 return result;
             } else {
