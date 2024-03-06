@@ -2,6 +2,8 @@
 #include "start.h"
 #include "user/userdata.h"
 
+#include "games/slots/slots.h"
+
 #include <iostream>
 
 int main(){

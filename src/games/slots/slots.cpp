@@ -6,6 +6,7 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
+#include <unistd.h>
 
 using namespace std;
 void slots(){
@@ -33,9 +34,6 @@ void slots(){
 
 void cheapSlots(){
     cout << "Hello" << endl;
-
-    double* bet = new double;
-
     bool play = true;
 
     while (play) {
@@ -43,38 +41,89 @@ void cheapSlots(){
         cout << "$5" << endl;
         cout << "$10" << endl;
         cout << "$20" << endl;
-        *bet = (double)slotsBetInput(5, 10, 20);
+        double bet = (double)slotsBetInput(5, 10, 20);
 
+        double* money = getMoney();
+        if (*money < bet)
+        {
+            cout << "You are broke" << endl;
+            sleep(1);
+            return;
+        }
+        
         updateSpent(bet);
+        changeMoney(-bet);
 
-        bool win = spin(5);
+        if (spin(5)){
+            updateEarned(bet * 5);
+            changeMoney(bet * 5);
+        }
     
         play = keepPlayingInput();
     }
-
-    delete bet;
 }
 
 void expensiveSlots(){
     cout << "Welcome to the High Roller slots machine, valued customer!" << endl;
-    cout << "How much would you like to use per spin?" << endl;
+    bool play = true;
 
-    cout << "$1000" << endl;
-    cout << "$2000" << endl;
-    cout << "$5000" << endl;
+    while (play){
+        cout << "How much would you like to use per spin?" << endl;
 
-    //int bet = slotsBetInput(1000, 2000, 5000);
+        cout << "$100" << endl;
+        cout << "$200" << endl;
+        cout << "$500" << endl;
+
+        double bet = slotsBetInput(100, 200, 500);
+
+        double* money = getMoney();
+        if (*money < bet){
+            cout << "You are broke" << endl;
+            sleep(1);
+            return;
+        }
+        
+        updateSpent(bet);
+        changeMoney(-bet);
+
+        if (spin(5)){
+            updateEarned(bet * 5);
+            changeMoney(bet * 5);
+        }
+    
+        play = keepPlayingInput();
+    }
 }
 
 void highRollerSlots(){
     cout << "Welcome to the expensive slots machine!" << endl;
-    cout << "How much would you like to use per spin?" << endl;
+    bool play = true;
 
-    cout << "$100" << endl;
-    cout << "$200" << endl;
-    cout << "$500" << endl;
+    while (play){
+        cout << "How much would you like to use per spin?" << endl;
+        cout << "$1000" << endl;
+        cout << "$2000" << endl;
+        cout << "$5000" << endl;
 
-    //int bet = slotsBetInput(100, 200, 500);
+        double bet = slotsBetInput(1000, 2000, 5000);
+
+        double* money = getMoney();
+        if (*money < bet){
+            cout << "You are broke" << endl;
+            sleep(1);
+            return;
+        }
+        
+        updateSpent(bet);
+        changeMoney(-bet);
+
+        if (spin(5)){
+            updateEarned(bet * 5);
+            changeMoney(bet * 5);
+        }
+    
+        play = keepPlayingInput();
+    } 
 }
 
 bool spin(int symbolsNum){
@@ -82,29 +131,39 @@ bool spin(int symbolsNum){
     int cols = 3;
 
     char* symbols = new char[symbolsNum];
-    for (size_t i = 0; i < symbolsNum; i++){
+    for (int i = 0; i < symbolsNum; i++){
         symbols[i] = 'A' + i;
     }
 
     char result[rows][cols];
 
-    default_random_engine rng(time(NULL));
-    shuffle(symbols, symbols + symbolsNum, default_random_engine(rng));
+    srand(time(NULL));
 
-    int k = 0;
-    for (int i = 0; i < rows; i++){
-        for (int j = 0; j < cols; j++){
-            result[i][j] = symbols[k];
-            k = (k + 1) % symbolsNum;
+    for (int i = 0; i < cols; i++){
+        int random = rand() % symbolsNum;
+
+        for (int j = 0; j < rows; j++){
+            result[j][i] = symbols[random];
+            if (random == 0) {
+                result[0][i] = symbols[symbolsNum - 1];
+                result[2][i] = symbols[random - 1];
+            } else if (random == symbolsNum - 1) {
+                result[0][i] = symbols[random - 1];
+                result[2][i] = symbols[0];
+            } else {
+                result[0][i] = symbols[random - 1];
+                result[2][i] = symbols[random + 1];
+            }
         }
     }
-
+    
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
             cout << result[i][j] << " ";
         }
         cout << endl;
     }
+    
 
     if (result[1][0] == result[1][1] && result[1][1] == result[1][2]){
         cout << "You win!" << endl;

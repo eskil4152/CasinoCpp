@@ -36,8 +36,12 @@ double* getSpent() {
     return spent;
 }
 
-void updateSpent(double* spentPtr){
+void updateSpent(double spent){
+    double* spentPtr = new double;
+    *spentPtr = spent;
+
     user.changeSpent(*spentPtr);
+    delete spentPtr;
 }
 
 double* getEarned(){
@@ -47,6 +51,10 @@ double* getEarned(){
     return earned;
 }
 
-void updateEarned(double* earnedPtr){
+void updateEarned(double earned){
+    double* earnedPtr = new double;
+    *earnedPtr = earned;
+
     user.changeEarned(*earnedPtr);
+    delete earnedPtr;
 }
