@@ -4,6 +4,7 @@
 #include "tools/checkInput.h"
 
 #include "games/slots/slots.h"
+#include "games/horses/horseRacing.h"
 
 using namespace std;
 void play(){
@@ -20,7 +21,7 @@ void play(){
         cout << "Cards" << endl;;
         break;
     case 2:
-        cout << "Horses" << endl;;
+        horseRacing();
         break;
     case 3:
         slots();
