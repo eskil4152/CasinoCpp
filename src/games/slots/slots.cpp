@@ -83,6 +83,8 @@ void spin() {
     char symbols[] = {'A', 'B', 'C', 'D', 'E'};
     char result[rows][cols];
 
+    srand(time(NULL));
+
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
             int randomIndex = rand() % symbolsNum;
