@@ -45,7 +45,7 @@ void cheapSlots(){
 
         updateSpent(bet);
 
-        // SPIN
+        spin();
 
         play = keepPlayingInput();
     }
@@ -61,7 +61,7 @@ void expensiveSlots(){
     cout << "$2000" << endl;
     cout << "$5000" << endl;
 
-    int bet = slotsBetInput(1000, 2000, 5000);
+    //int bet = slotsBetInput(1000, 2000, 5000);
 }
 
 void highRollerSlots(){
@@ -72,5 +72,35 @@ void highRollerSlots(){
     cout << "$200" << endl;
     cout << "$500" << endl;
 
-    int bet = slotsBetInput(100, 200, 500);
+    //int bet = slotsBetInput(100, 200, 500);
+}
+
+void spin() {
+    int rows = 3;
+    int cols = 3;
+    int symbolsNum = 5;
+
+    char symbols[] = {'A', 'B', 'C', 'D', 'E'};
+    char result[rows][cols];
+
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < cols; j++){
+            int randomIndex = rand() % symbolsNum;
+            result[i][j] = symbols[randomIndex];
+        }
+    }
+
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < cols; j++){
+            printf("%c ", result[i][j]);
+        }
+        printf("\n");
+    }
+
+    if (result[1][0] == result[1][1] && result[1][1] == result[1][2])
+    {
+        cout << "You win!" << endl;
+    } else {
+        cout << "You lose!" << endl;
+    }
 }

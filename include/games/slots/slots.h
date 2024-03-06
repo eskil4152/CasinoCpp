@@ -6,4 +6,6 @@ void cheapSlots();
 void expensiveSlots();
 void highRollerSlots();
 
+void spin();
+
 #endif
