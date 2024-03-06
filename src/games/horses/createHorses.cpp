@@ -17,7 +17,7 @@ Horse* create(){
         int randomSpeed = rand() % 5 + 1;
         int randomRider = rand() % 5 + 1;
 
-        horses[i].name = "HORSE " + std::to_string(i);
+        horses[i].name = "HORSE " + std::to_string(i + 1);
         horses[i].speed = static_cast<HORSE_SPEED>(randomSpeed);
         horses[i].rider = static_cast<RIDER_LEVEL>(randomRider);
 
@@ -33,7 +33,8 @@ Horse* create(){
         }
 
         horses[i].odds = odds;
-    }   
+    }
 
+    std::cout << "Total points for this race: " << totalPoints << std::endl;
     return horses;
 }
