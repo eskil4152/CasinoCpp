@@ -6,43 +6,75 @@
 #include "games/horses/horseInputCheck.h"
 #include "entities/horses.h"
 
+#include "tools/checkInput.h"
 #include "user/userdata.h"
 
 #define HORSES_COUNT 12
 
 using namespace std;
 void horseRacing(){
-    Horse* horses = create();
-    int totalPoints = 0;
+    cout << "Welcome to Horse Racing!" << endl;
+    bool play = true;
 
-    for (size_t i = 0; i < HORSES_COUNT; i++){
-        cout << "Horse " << horses[i].name << " has " << horses[i].points() 
-            << " points and " << horses[i].odds << "x payout ratio" << endl;
-    }
+    while (play){
+        Horse* horses = create();
+        int totalPoints = 0;
 
-    cout << "Who do you want to bet on? Answer with horse number" << endl;
+        for (size_t i = 0; i < HORSES_COUNT; i++){
+            cout << "Horse " << horses[i].name << " has " << horses[i].odds 
+                << " odds and " << horses[i].payoutRatio << "x payout ratio" << endl;
+        }
 
-    int horse = horseSelectionInput();
-    Horse selectedHorse = horses[horse];
+        cout << "Who do you want to bet on? Answer with horse number" << endl;
 
-    cout << "And how much do you want to bet?" << endl;
+        int horse = horseSelectionInput();
+        Horse selectedHorse = horses[horse - 1];
 
-    double bet = betInput();
-    double* money = getMoney();
-    
-    if (bet > *money){
-        cout << "You do not have that much money. You only have $" << *money << endl;
-        return;
-    }
-    
-    updateSpent(bet);
-    changeMoney(-bet);
+        cout << "And how much do you want to bet?" << endl;
 
-    double potentialPayout = bet * selectedHorse.odds;
+        double bet = betInput();
+        double* money = getMoney();
+        
+        if (bet > *money){
+            cout << "You do not have that much money. You only have $" << *money << endl;
+            return;
+        }
+        
+        updateSpent(bet);
+        changeMoney(-bet);
 
-    race(horses);
+        double potentialPayout = bet * selectedHorse.payoutRatio;
+        cout << "If horse " << selectedHorse.name << " wins, you will get $" << potentialPayout << endl; 
+
+        if (race(horses, selectedHorse)){
+            changeMoney(potentialPayout);
+            updateEarned(potentialPayout);
+        }
+        
+        play = keepPlayingInput();
+    }    
 }
 
-bool race(Horse* horses){
-    
+bool race(Horse* horses, Horse selectedHorse){
+    double totalOdds = 0;
+
+    for (size_t i = 0; i < HORSES_COUNT; i++){
+        totalOdds += horses[i].odds;
+    }
+
+    double randomNumber = static_cast<double>(rand()) / RAND_MAX * totalOdds;
+
+    double cumulativeOdds = 0;
+    for (int i = 0; i < HORSES_COUNT; i++){
+        cumulativeOdds += horses[i].odds;
+        if (randomNumber <= cumulativeOdds) {
+            cout << "The winner is: " << horses[i].name << endl;
+            if (horses[i].name == selectedHorse.name){
+                return true;
+            }
+            return false;
+        }
+    }
+
+    cout << "No winner" << endl;
 }

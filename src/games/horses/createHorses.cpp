@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 #define HORSES_COUNT 12
 
@@ -26,15 +27,18 @@ Horse* create(){
 
     for (size_t i = 0; i < HORSES_COUNT; i++) {
         int points = horses[i].points();
-        double odds = totalPoints / points / 4;
 
-        if (odds <= 1){
-            odds = 1.1;
+        double odds = (double)points / (double)totalPoints * 100;
+        double payoutRatio = totalPoints / points / 4;
+
+        if (payoutRatio <= 1){
+            payoutRatio = 1.1;
         }
 
         horses[i].odds = odds;
+        horses[i].payoutRatio = payoutRatio;
     }
-
+    
     std::cout << "Total points for this race: " << totalPoints << std::endl;
     return horses;
 }

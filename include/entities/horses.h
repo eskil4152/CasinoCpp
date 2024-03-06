@@ -21,6 +21,7 @@ struct Horse {
     }
 
     double odds;
+    double payoutRatio;
 };
 
 #endif
