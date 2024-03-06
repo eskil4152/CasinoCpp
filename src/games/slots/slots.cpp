@@ -10,7 +10,7 @@
 
 using namespace std;
 void slots(){
-    cout << "Choose a slow machine: " << endl;
+    cout << "Choose a slot machine: " << endl;
     cout << "1 - Cheap Slots Machine ($5 - $20 per spin)" << endl;
     cout << "2 - Expensive Slots Machine ($100 - $500 per spin)" << endl;
     cout << "3 - High Roller Slots Machine ($1000 - $5000 per spin)" << endl;

@@ -5,12 +5,13 @@
 
 #include "games/slots/slots.h"
 #include "games/horses/horseRacing.h"
+#include "games/blackjack/blackjack.h"
 
 using namespace std;
 void play(){
     cout.clear();
     cout << "What do you want to play? Here is our selection:" << endl;
-    cout << "1: Cards\n" << "2: Horses\n" << "3: Slots" << endl;
+    cout << "1: Slots\n" << "2: Horses\n" << "3: Blackjack" << "4: Poker" << "5: Roulette" << endl;
 
     int* gameSelectionPtr = gameTypeInput();
     int gameSelection = *gameSelectionPtr;
@@ -18,13 +19,19 @@ void play(){
 
     switch (gameSelection) {
     case 1:
-        cout << "Cards" << endl;;
+        slots();
         break;
     case 2:
         horseRacing();
         break;
     case 3:
-        slots();
+        blackjack();
+        break;
+    case 4:
+        cout << "Poker" << endl;
+        break;
+    case 5:
+        cout << "Roulette" << endl;
         break;
     default:
         break;

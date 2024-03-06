@@ -1,5 +1,5 @@
-#ifndef HORSE_INPUT_CHECK
-#define HORSE_INPUT_CHECK
+#ifndef HORSE_INPUT_CHECK_H
+#define HORSE_INPUT_CHECK_H
 
 int horseSelectionInput();
 int betInput();

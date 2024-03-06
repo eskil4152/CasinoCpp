@@ -1,6 +1,6 @@
 #include "entities/user.h"
 
-User::User() : money(1000.0), spent(0.0), earned(0.0) {}
+User::User() : money(10000.0), spent(0.0), earned(0.0) {}
 
 std::string User::getName() const {
     return name;
