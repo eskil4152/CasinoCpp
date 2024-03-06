@@ -39,24 +39,17 @@ void cheapBlackjackTable(){
     while (play) {
         cout << "How much would you like to bet?" << endl;
         int bet = blackjackBetInput(5, 50);
-        cout << "1";
 
         double* money = getMoney();
-        cout << "2";
-        if (*money < bet)
-        {
+        if (*money < bet){
             cout << "You are broke" << endl;
             return;
         }
-        cout << "3";
         
         updateSpent(bet);
-        cout << "4";
         changeMoney(-bet);
-        cout << "5";
 
         BlackjackResult result = deal();
-        cout << "6";
 
         if (result.won){
             if (result.blackjack){

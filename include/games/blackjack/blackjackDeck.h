@@ -4,14 +4,14 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#include <iostream>
 
 enum SUIT {
     HEARTS, DIAMONDS, CLUBS, SPADES
 };
 
 enum RANK {
-    //ACE = 1,
-    ACE = 11,
+    ACE = 1,
     TWO = 2,
     THREE = 3,
     FOUR = 4,
@@ -29,37 +29,24 @@ enum RANK {
 struct card {
     RANK rank;
     SUIT suit;
-
-    /*int getValue() const {
-        if (rank == ACE){
-            return 11;
-        } else if (rank >= JACK && rank <= KING) {
-            return 10;
-        } else {
-            return (int)rank;
-        }
-    }
-
-    void setAceValue(int value){
-        if (rank == ACE){
-            value = std::clamp(value, 1, 11);
-        }
-    }*/
 };
 
-struct blackjackDeck{
+struct BlackjackDeck{
     std::vector<card> deck;
 
-    blackjackDeck(){
+    BlackjackDeck(){
         initializeDeck();
+        shuffle();
     }
 
     void initializeDeck(){
+        deck.clear();
         for (int suit = HEARTS; suit <= SPADES; suit++){
             for (int rank = ACE; rank <= KING; rank++){
                 card newCard = { static_cast<RANK>(rank), static_cast<SUIT>(suit) };
                 deck.push_back(newCard);
             }
+            std::cout << deck.size() << std::endl;
         }
     }
 
@@ -75,11 +62,20 @@ struct blackjackDeck{
             deck.pop_back();
             return drawnCard;
         } else {
-            initializeDeck();
-            shuffle();
-            return drawCard();
+            std::cerr << "Error: Deck is empty!" << std::endl;
+            exit(1);
         }
     }
 };
+
+std::string suitToString(SUIT suit) {
+    switch (suit) {
+        case HEARTS: return "HEARTS";
+        case DIAMONDS: return "DIAMONDS";
+        case CLUBS: return "CLUBS";
+        case SPADES: return "SPADES";
+        default: return "UNKNOWN";
+    }
+}
 
 #endif

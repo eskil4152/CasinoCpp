@@ -6,20 +6,21 @@
 
 using namespace std;
 BlackjackResult deal(){
-    blackjackDeck deck;
+    BlackjackDeck deck; 
+
     deck.shuffle();
 
     card dealerCards[2];
     card playerCards[2];
 
     playerCards[0] = deck.drawCard();
-    cout << "You drew a " << playerCards[0].rank << " of " << playerCards[0].suit << endl;
+    cout << "You drew a " << playerCards[0].rank << " of " << suitToString(playerCards[0].suit) << endl;
 
     dealerCards[0] = deck.drawCard();
-    cout << "Dealer drew " << dealerCards[0].rank << " of " << dealerCards[0].suit << endl;
+    cout << "Dealer drew " << dealerCards[0].rank << " of " << suitToString(dealerCards[0].suit) << endl;
 
     playerCards[1] = deck.drawCard();
-    cout << "You drew a " << playerCards[1].rank << " of " << playerCards[1].suit << endl; 
+    cout << "You drew a " << playerCards[1].rank << " of " << suitToString(playerCards[1].suit) << endl; 
 
     dealerCards[1] = deck.drawCard();
 
