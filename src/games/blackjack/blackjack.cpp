@@ -52,6 +52,7 @@ void cheapBlackjackTable(){
         BlackjackResult result = deal();
 
         if (result == BLACKJACK){
+            cout << "BLACKJACK!!" << endl;
             updateEarned(bet*2.5);
             changeMoney(bet*2.5);
         } else if (result == WIN) {

@@ -78,4 +78,30 @@ std::string suitToString(SUIT suit) {
     }
 }
 
+int calculateHandValue(const std::vector<card>& hand) {
+    int total = 0;
+    int numAces = 0;
+
+    for (const auto& handCard : hand) {
+        if (handCard.rank == ACE) {
+            numAces++;
+        } else {
+            total += handCard.rank;
+        }
+    }
+
+    // Add Aces as 11 if it doesn't cause the total to exceed 21
+    total += numAces * 11;
+
+    // Adjust Aces to 1 if necessary to avoid busting
+    while (total > 21 && numAces > 0) {
+        total -= 10;  // Convert one ACE from 11 to 1
+        numAces--;
+    }
+
+    return total;
+}
+
+
+
 #endif
