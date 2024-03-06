@@ -6,6 +6,6 @@ void cheapSlots();
 void expensiveSlots();
 void highRollerSlots();
 
-void spin();
+bool spin(int symbolsNum);
 
 #endif

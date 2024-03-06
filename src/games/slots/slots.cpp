@@ -4,6 +4,8 @@
 #include "tools/checkInput.h"
 
 #include <iostream>
+#include <algorithm>
+#include <random>
 
 using namespace std;
 void slots(){
@@ -45,8 +47,8 @@ void cheapSlots(){
 
         updateSpent(bet);
 
-        spin();
-
+        bool win = spin(5);
+    
         play = keepPlayingInput();
     }
 
@@ -75,34 +77,40 @@ void highRollerSlots(){
     //int bet = slotsBetInput(100, 200, 500);
 }
 
-void spin() {
+bool spin(int symbolsNum){
     int rows = 3;
     int cols = 3;
-    int symbolsNum = 5;
 
-    char symbols[] = {'A', 'B', 'C', 'D', 'E'};
+    char* symbols = new char[symbolsNum];
+    for (size_t i = 0; i < symbolsNum; i++){
+        symbols[i] = 'A' + i;
+    }
+
     char result[rows][cols];
 
-    srand(time(NULL));
+    default_random_engine rng(time(NULL));
+    shuffle(symbols, symbols + symbolsNum, default_random_engine(rng));
 
+    int k = 0;
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
-            int randomIndex = rand() % symbolsNum;
-            result[i][j] = symbols[randomIndex];
+            result[i][j] = symbols[k];
+            k = (k + 1) % symbolsNum;
         }
     }
 
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
-            printf("%c ", result[i][j]);
+            cout << result[i][j] << " ";
         }
-        printf("\n");
+        cout << endl;
     }
 
-    if (result[1][0] == result[1][1] && result[1][1] == result[1][2])
-    {
+    if (result[1][0] == result[1][1] && result[1][1] == result[1][2]){
         cout << "You win!" << endl;
+        return true;
     } else {
         cout << "You lose!" << endl;
+        return false;
     }
 }
