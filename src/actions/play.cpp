@@ -11,7 +11,7 @@ using namespace std;
 void play(){
     cout.clear();
     cout << "What do you want to play? Here is our selection:" << endl;
-    cout << "1: Slots\n" << "2: Horses\n" << "3: Blackjack" << "4: Poker" << "5: Roulette" << endl;
+    cout << "1: Slots\n" << "2: Horses\n" << "3: Blackjack\n" << "4: Poker\n" << "5: Roulette\n" << endl;
 
     int* gameSelectionPtr = gameTypeInput();
     int gameSelection = *gameSelectionPtr;
