@@ -32,7 +32,6 @@ int slotsInput(){
 
 int slotsBetInput(int option1, int option2, int option3){
     string betString;
-    int result = 0;
 
     while (1){
         getline(cin, betString);
@@ -45,7 +44,7 @@ int slotsBetInput(int option1, int option2, int option3){
         }
         
         if (isAllDigits && !betString.empty()) {
-            result = stoi(betString);
+            int result = stoi(betString);
             if (result == option1 || result == option2 || result == option3) {
                 return result;
             } else {

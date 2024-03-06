@@ -4,7 +4,6 @@
 using namespace std;
 int horseSelectionInput(){
     string horseSelectionString;
-    int result = 0;
 
     while (1){
         getline(cin, horseSelectionString);
@@ -17,7 +16,7 @@ int horseSelectionInput(){
         }
         
         if (isAllDigits && !horseSelectionString.empty()) {
-            result = stoi(horseSelectionString);
+            int result = stoi(horseSelectionString);
             if (result >= 1 && result <= 12) {
                 return result;
             } else {
