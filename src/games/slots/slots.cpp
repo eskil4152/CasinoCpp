@@ -19,29 +19,42 @@ void slots(){
 
     switch (choice) {
     case 1:
-        cheapSlots();
+        slotsMachine(1, 5, 10, 20);
         break;
     case 2:
-        expensiveSlots();
+        slotsMachine(2, 100, 200, 500);
         break;
     case 3:
-        highRollerSlots();
+        slotsMachine(3, 1000, 2000, 5000);
         break;
     default:
         break;
     }
 }
 
-void cheapSlots(){
-    cout << "Hello" << endl;
+void slotsMachine(int choice, int min, int mid, int max){
+    switch (choice){
+    case 1:
+        cout << "Hello" << endl;
+        break;
+    case 2:
+        cout << "Hello, and welcome." << endl;
+        break;
+    case 3:
+        cout << "Hello, valued customer! Please enjoy out state of the art slot machines!" << endl;
+        break;
+    default:
+        break;
+    }
+
     bool play = true;
 
     while (play) {
         cout << "How much would you like to use?" << endl;
-        cout << "$5" << endl;
-        cout << "$10" << endl;
-        cout << "$20" << endl;
-        double bet = (double)slotsBetInput(5, 10, 20);
+        cout << "$" << min << endl;
+        cout << "$" << mid << endl;
+        cout << "$" << max << endl;
+        double bet = (double)slotsBetInput(min, mid, max);
 
         double* money = getMoney();
         if (*money < bet)
@@ -61,69 +74,6 @@ void cheapSlots(){
     
         play = keepPlayingInput();
     }
-}
-
-void expensiveSlots(){
-    cout << "Welcome to the High Roller slots machine, valued customer!" << endl;
-    bool play = true;
-
-    while (play){
-        cout << "How much would you like to use per spin?" << endl;
-
-        cout << "$100" << endl;
-        cout << "$200" << endl;
-        cout << "$500" << endl;
-
-        double bet = slotsBetInput(100, 200, 500);
-
-        double* money = getMoney();
-        if (*money < bet){
-            cout << "You are broke" << endl;
-            sleep(1);
-            return;
-        }
-        
-        updateSpent(bet);
-        changeMoney(-bet);
-
-        if (spin(5)){
-            updateEarned(bet * 5);
-            changeMoney(bet * 5);
-        }
-    
-        play = keepPlayingInput();
-    }
-}
-
-void highRollerSlots(){
-    cout << "Welcome to the expensive slots machine!" << endl;
-    bool play = true;
-
-    while (play){
-        cout << "How much would you like to use per spin?" << endl;
-        cout << "$1000" << endl;
-        cout << "$2000" << endl;
-        cout << "$5000" << endl;
-
-        double bet = slotsBetInput(1000, 2000, 5000);
-
-        double* money = getMoney();
-        if (*money < bet){
-            cout << "You are broke" << endl;
-            sleep(1);
-            return;
-        }
-        
-        updateSpent(bet);
-        changeMoney(-bet);
-
-        if (spin(5)){
-            updateEarned(bet * 5);
-            changeMoney(bet * 5);
-        }
-    
-        play = keepPlayingInput();
-    } 
 }
 
 bool spin(int symbolsNum){

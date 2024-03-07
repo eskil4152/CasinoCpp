@@ -2,9 +2,7 @@
 #define SLOTS_H
 
 void slots();
-void cheapSlots();
-void expensiveSlots();
-void highRollerSlots();
+void slotsMachine(int choice, int min, int mid, int max);
 
 bool spin(int symbolsNum);
 
