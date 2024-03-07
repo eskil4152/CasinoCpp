@@ -1,11 +1,11 @@
-#include "games/blackjack/blackjackDeck.h"
+#include "tools/cardDeck.h"
 
-BlackjackDeck::BlackjackDeck() {
+CardDeck::CardDeck() {
     initializeDeck();
     shuffle();
 }
 
-void BlackjackDeck::initializeDeck() {
+void CardDeck::initializeDeck() {
     deck.clear();
     for (int suit = HEARTS; suit <= SPADES; suit++) {
         for (int rank = ACE; rank <= KING; rank++) {
@@ -15,13 +15,13 @@ void BlackjackDeck::initializeDeck() {
     }
 }
 
-void BlackjackDeck::shuffle() {
+void CardDeck::shuffle() {
     std::random_device random;
     std::mt19937_64 rng(random());
     std::shuffle(deck.begin(), deck.end(), rng);
 }
 
-card BlackjackDeck::drawCard() {
+card CardDeck::drawCard() {
     if (!deck.empty()) {
         card drawnCard = deck.back();
         deck.pop_back();
@@ -66,7 +66,7 @@ std::string suitToString(SUIT suit) {
     }
 }
 
-int calculateHandValue(const std::vector<card> &hand) {
+int calculateBlackjackHand(const std::vector<card> &hand) {
     int handValue = 0;
     int aces = 0;
 

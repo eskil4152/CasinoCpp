@@ -1,13 +1,14 @@
 #include "games/blackjack/blackjackResult.h"
 #include "games/blackjack/blackjackDeal.h"
 #include "games/blackjack/blackjackInputs.h"
-#include "games/blackjack/blackjackDeck.h"
+
+#include "tools/cardDeck.h"
 
 #include <iostream>
 
 using namespace std;
 BlackjackResult deal(){
-    BlackjackDeck deck;
+    CardDeck deck;
 
     bool draw = false;
 
@@ -28,8 +29,8 @@ BlackjackResult deal(){
         cout << "   " << rankToString(playerCard.rank) << " of " << suitToString(playerCard.suit) << endl;
     }
 
-    int dealerSum = calculateHandValue(dealerCards);
-    int playerSum = calculateHandValue(playerCards);
+    int dealerSum = calculateBlackjackHand(dealerCards);
+    int playerSum = calculateBlackjackHand(playerCards);
     cout << "Your current hand value: " << playerSum << endl; 
 
     if (playerSum == 21 && dealerSum != 21){
@@ -61,38 +62,38 @@ BlackjackResult deal(){
         playerCards.push_back(newCard);
 
         cout << "You drew a " << newCard.rank << " of " << suitToString(newCard.suit) << endl;
-        cout << "Your current hand value: " << calculateHandValue(playerCards) << endl;
+        cout << "Your current hand value: " << calculateBlackjackHand(playerCards) << endl;
         
-        if (calculateHandValue(playerCards) >= 21){
+        if (calculateBlackjackHand(playerCards) >= 21){
             break;
         }
 
         draw = blackjackHit();
     }
 
-    if (calculateHandValue(playerCards) > 21){
+    if (calculateBlackjackHand(playerCards) > 21){
         cout << "You busted" << endl;
         return LOSE;
     }
 
     cout << "Dealers second car was a " << dealerCards[1].rank << " of " << suitToString(dealerCards[1].suit) << endl;
-    cout << "Dealer has " << calculateHandValue(dealerCards) << endl;
+    cout << "Dealer has " << calculateBlackjackHand(dealerCards) << endl;
 
-    while (calculateHandValue(dealerCards) < 17){
+    while (calculateBlackjackHand(dealerCards) < 17){
         card newCard = deck.drawCard();
         dealerCards.push_back(newCard);
 
         cout << "Dealer drew a " << newCard.rank << " of " << suitToString(newCard.suit) << endl;
-        cout << "Dealer has: " << calculateHandValue(dealerCards) << endl;
+        cout << "Dealer has: " << calculateBlackjackHand(dealerCards) << endl;
     }
 
-    if (calculateHandValue(dealerCards) > 21){
+    if (calculateBlackjackHand(dealerCards) > 21){
         cout << "Dealer busted, you win" << endl;
         return WIN;
-    } else if (calculateHandValue(dealerCards) > calculateHandValue(playerCards)){
+    } else if (calculateBlackjackHand(dealerCards) > calculateBlackjackHand(playerCards)){
         cout << "You lost..." << endl;
         return LOSE;
-    } else if (calculateHandValue(dealerCards) == calculateHandValue(playerCards)){
+    } else if (calculateBlackjackHand(dealerCards) == calculateBlackjackHand(playerCards)){
         cout << "Bet pushed" << endl; 
         return PUSH;
     }

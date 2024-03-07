@@ -1,5 +1,5 @@
-#ifndef BLACKJACK_DECK_H
-#define BLACKJACK_DECK_H
+#ifndef CARD_DECK_H
+#define CARD_DECK_H
 
 #include <vector>
 #include <algorithm>
@@ -32,11 +32,11 @@ struct card {
     SUIT suit;
 };
 
-class BlackjackDeck {
+class CardDeck {
 public:
     std::vector<card> deck;
 
-    BlackjackDeck();
+    CardDeck();
 
     void initializeDeck();
     void shuffle();
@@ -47,6 +47,6 @@ std::string rankToString(RANK rank);
 
 std::string suitToString(SUIT suit);
 
-int calculateHandValue(const std::vector<card>& hand);
+int calculateBlackjackHand(const std::vector<card>& hand);
 
 #endif
