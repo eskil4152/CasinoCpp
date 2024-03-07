@@ -1,7 +1,7 @@
 #include "games/blackjack/blackjackResult.h"
 #include "games/blackjack/blackjackDeal.h"
-#include "games/blackjack/blackjackDeck.h"
 #include "games/blackjack/blackjackInputs.h"
+#include "games/blackjack/blackjackDeck.h"
 
 #include <iostream>
 
@@ -58,11 +58,11 @@ BlackjackResult deal(){
 
     while (draw){
         card newCard = deck.drawCard();
-        playerCards.push_back(deck.drawCard());
+        playerCards.push_back(newCard);
 
         cout << "You drew a " << newCard.rank << " of " << suitToString(newCard.suit) << endl;
         cout << "Your current hand value: " << calculateHandValue(playerCards) << endl;
-
+        
         if (calculateHandValue(playerCards) >= 21){
             break;
         }
@@ -93,7 +93,7 @@ BlackjackResult deal(){
         cout << "You lost..." << endl;
         return LOSE;
     } else if (calculateHandValue(dealerCards) == calculateHandValue(playerCards)){
-        cout << "Bet pushed" << endl;
+        cout << "Bet pushed" << endl; 
         return PUSH;
     }
 
