@@ -2,8 +2,8 @@
 
 ## TODO ##
 - [x] Add Slots
-- [ ] Add Horses
-- [ ] Add Blackjack
+- [x] Add Horses
+- [x] Add Blackjack
 - [ ] Add Roulette
 - [ ] Add Poker
 - [ ] Add More
