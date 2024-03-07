@@ -133,6 +133,7 @@ bool spin(int symbolsNum){
     char* symbols = new char[symbolsNum];
     for (int i = 0; i < symbolsNum; i++){
         symbols[i] = 'A' + i;
+        cout << "Symbols: " << symbols[i] << endl;
     }
 
     char result[rows][cols];
@@ -141,12 +142,13 @@ bool spin(int symbolsNum){
 
     for (int i = 0; i < cols; i++){
         int random = rand() % symbolsNum;
+        cout << "Random is " << random << endl;
 
         for (int j = 0; j < rows; j++){
             result[j][i] = symbols[random];
             if (random == 0) {
                 result[0][i] = symbols[symbolsNum - 1];
-                result[2][i] = symbols[random - 1];
+                result[2][i] = symbols[random + 1];
             } else if (random == symbolsNum - 1) {
                 result[0][i] = symbols[random - 1];
                 result[2][i] = symbols[0];
