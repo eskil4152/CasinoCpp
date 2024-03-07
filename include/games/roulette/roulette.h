@@ -1,19 +1,7 @@
 #ifndef ROULETTE_H
 #define ROULETTE_H
 
-enum COLOR {
-    RED, BLACK, GREEN
-};
-
-enum ODD_EVEN {
-    ODD, EVEN, ZERO
-};
-
-struct WheelNumber {
-    int number;
-    COLOR color;
-    ODD_EVEN oddEven;
-};
+#include "games/roulette/wheel.h"
 
 struct Bet {
     int type;
