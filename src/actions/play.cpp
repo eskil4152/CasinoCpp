@@ -7,6 +7,7 @@
 #include "games/horses/horseRacing.h"
 #include "games/blackjack/blackjack.h"
 #include "games/roulette/roulette.h"
+#include "games/poker/poker.h"
 
 using namespace std;
 void play(){
@@ -29,7 +30,7 @@ void play(){
         blackjack();
         break;
     case 4:
-        cout << "Poker" << endl;
+        poker();
         break;
     case 5:
         roulette();
