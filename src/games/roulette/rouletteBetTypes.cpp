@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "games/roulette/roulette.h"
+
 using namespace std;
 int numberBet(){
     int selection;
@@ -21,7 +23,7 @@ int numberBet(){
     return selection;
 }
 
-string colorBet(){
+COLOR colorBet(){
     int selection;
     string selectionString;
 
@@ -39,13 +41,13 @@ string colorBet(){
     } while (selection < min || selection > max);
        
     if (selection == 1){
-        return "RED";
+        return RED;
     } else {
-        return "BLACK";
+        return BLACK;
     }
 }
 
-string oddEvenBet(){
+ODD_EVEN oddEvenBet(){
     int selection;
 
     int min = 1;
@@ -62,8 +64,8 @@ string oddEvenBet(){
     } while (selection < min || selection > max);
        
     if (selection == 1){
-        return "ODD";
+        return ODD;
     } else {
-        return "EVEN";
+        return EVEN;
     }
 }

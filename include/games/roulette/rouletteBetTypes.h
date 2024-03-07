@@ -1,10 +1,10 @@
 #ifndef ROULETTE_BET_TYPES_H
 #define ROULETTE_BET_TYPES_H
 
-#include <string>
+#include "games/roulette/roulette.h"
 
 int numberBet();
-std::string colorBet();
-std::string oddEvenBet();
+COLOR colorBet();
+ODD_EVEN oddEvenBet();
 
 #endif

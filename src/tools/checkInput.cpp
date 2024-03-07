@@ -55,10 +55,10 @@ int* gameTypeInput(){
         
         if (isAllDigits && !gameSelectionString.empty()) {
             *result = stoi(gameSelectionString);
-            if (*result >= 1 && *result <= 4) {
+            if (*result >= 1 && *result <= 5) {
                 return result;
             } else {
-                cout << "Please enter 1, 2, 3 or 4" << endl;
+                cout << "Please enter 1, 2, 3, 4 or 5" << endl;
             }
         } else {
             cout << "Please enter a valid number" << endl;

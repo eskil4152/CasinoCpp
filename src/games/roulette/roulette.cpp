@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include "games/roulette/roulette.h"
 #include "games/roulette/rouletteInputs.h"
@@ -30,7 +31,7 @@ void roulette(){
     }
 }
 
-int playRoulette(int min, int max){
+void playRoulette(int min, int max){
     cout << "Hello, and welcome to roulette!" << endl;
     bool play = true;
 
@@ -42,7 +43,7 @@ int playRoulette(int min, int max){
         case 1:
             userBet.type = 1;
             userBet.number = numberBet();
-            userBet.ratio = 36;
+            userBet.ratio = 35;
             break;
         case 2:
             userBet.type = 2;
@@ -69,25 +70,82 @@ int playRoulette(int min, int max){
         updateSpent(bet);
         changeMoney(-bet);
 
-        if (spinWheel(userBet)){
-            cout << "good" << endl;
+        bool result = spinWheel(userBet);
+
+        if (result){
+            int won = bet * userBet.ratio;
+            cout << "Congratiolations, you won $" << won << "!" << endl;
+
+            updateEarned(won);
+            changeMoney(won);
         }
+        
+        cout << "You lose.." << endl;
 
         play = keepPlayingInput();
     }   
 }
 
 bool spinWheel(Bet userBet){
+    int reds[18] = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36};
+
+    WheelNumber wheel[37];
+
+    WheelNumber zero;
+    zero.color = GREEN;
+    zero.number = 0;
+    zero.oddEven = ZERO;
+    wheel[0] = zero;
+
+    for(int i = 1; i < 37; i++){
+        WheelNumber number;
+        number.number = i;
+        number.oddEven = ODD;
+
+        if (i % 2 == 0){
+            number.oddEven = EVEN;
+        }
+
+        number.color = BLACK;
+        for (int j = 0; j < 18; j++){
+            if (reds[j] == i){
+                number.color = RED;
+            }
+        }
+
+        wheel[i] = number;
+    }
+
+    srand(time(NULL));
+
+    WheelNumber randomNumber = wheel[rand() % 37];
+    cout << "The winning number is " << randomNumber.number << " " << randomNumber.color << endl;
+
+    switch (userBet.type){
+    case 1:
+        if (userBet.number == randomNumber.number){
+            return true;
+        } else {
+            return false;
+        }
+        break;
+    case 2:
+        if (userBet.color == randomNumber.color){
+            return true;
+        } else {
+            return false;
+        }
+        break;
+    case 3:
+        if (userBet.oddEven == randomNumber.oddEven){
+            return true;
+        } else {
+            return false;
+        }
+        break;
     
+    default:
+    return false;
+        break;
+    }
 }
-
-struct Bet {
-    int type;
-
-    int number;
-    string oddEven;
-    string color;
-
-    int ratio;
-    int amount;
-};

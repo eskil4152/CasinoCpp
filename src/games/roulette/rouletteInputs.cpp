@@ -7,11 +7,11 @@ int rouletteTableInput(){
         cout << "Enter your choice of table (Either 1 or 2): ";
         cin >> choice;
 
-        if (choice != 1 || choice != 2) {
+        if (choice != 1 && choice != 2) {
             cout << "Invalid choice. Please enter 1 or 2." << endl;
         }
         
-    } while (choice != 1 || choice != 2);
+    } while (choice != 1 && choice != 2);
 
     return choice;
 }
