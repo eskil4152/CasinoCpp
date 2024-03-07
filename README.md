@@ -5,5 +5,6 @@
 - [x] Add Horses
 - [x] Add Blackjack
 - [ ] Add Roulette
+    - [ ] Roulette all bets
 - [ ] Add Poker
 - [ ] Add More

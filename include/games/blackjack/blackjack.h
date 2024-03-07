@@ -2,6 +2,6 @@
 #define BLACKJACK_H
 
 void blackjack();
-void playBlackjack(int rank, int min, int max);
+void playBlackjack(int table, int min, int max);
 
 #endif
