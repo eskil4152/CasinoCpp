@@ -3,5 +3,6 @@
 
 int blackjackTableInput();
 int blackjackBetInput(int min, int max);
+bool blackjackHit();
 
 #endif

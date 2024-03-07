@@ -19,26 +19,39 @@ void blackjack(){
 
     switch (choice) {
     case 1:
-        cheapBlackjackTable();
+        playBlackjack(1, 5, 50);
         break;
     case 2:
-        //expensiveSlots();
+        playBlackjack(2, 100, 500);
         break;
     case 3:
-        //highRollerSlots();
+        playBlackjack(3, 1000, 5000);
         break;
     default:
         break;
     }
 }
 
-void cheapBlackjackTable(){
-    cout << "Hello" << endl;
+void playBlackjack(int rank, int min, int max){
+    switch (rank){
+    case 1:
+        cout << "Hello" << endl;
+        break;
+    case 2:
+        cout << "Hello and welcome to blackjack" << endl;
+        break;
+    case 3:
+        cout << "Hello, valued customer! Welcome to blackjack!" << endl;
+        break;
+    
+    default:
+        break;
+    }
     bool play = true;
 
     while (play) {
         cout << "How much would you like to bet?" << endl;
-        int bet = blackjackBetInput(5, 50);
+        int bet = blackjackBetInput(min, max);
 
         double* money = getMoney();
         if (*money < bet){
@@ -52,7 +65,6 @@ void cheapBlackjackTable(){
         BlackjackResult result = deal();
 
         if (result == BLACKJACK){
-            cout << "BLACKJACK!!" << endl;
             updateEarned(bet*2.5);
             changeMoney(bet*2.5);
         } else if (result == WIN) {
