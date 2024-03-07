@@ -51,8 +51,6 @@ std::string rankToString(RANK rank) {
     }
 }
 
-
-
 std::string suitToString(SUIT suit) {
     switch (suit) {
         case HEARTS:
@@ -73,10 +71,11 @@ int calculateHandValue(const std::vector<card> &hand) {
     int aces = 0;
 
     for (const auto &handCard : hand) {
-        std::cout << "Card: " << handCard.rank << " of " << suitToString(handCard.suit) << std::endl;
         if (handCard.rank == ACE) {
             aces++;
             handValue += 11;
+        } else if (handCard.rank == JACK || handCard.rank == QUEEN || handCard.rank == KING) {
+            handValue += 10;
         } else {
             handValue += handCard.rank;
         }

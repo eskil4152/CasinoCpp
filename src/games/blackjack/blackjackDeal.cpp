@@ -25,7 +25,7 @@ BlackjackResult deal(){
     
     cout << "Your hand: " << endl;
     for (const auto& playerCard : playerCards) {
-        cout << "   " << playerCard.rank << " of " << suitToString(playerCard.suit) << endl;
+        cout << "   " << rankToString(playerCard.rank) << " of " << suitToString(playerCard.suit) << endl;
     }
 
     int dealerSum = calculateHandValue(dealerCards);
