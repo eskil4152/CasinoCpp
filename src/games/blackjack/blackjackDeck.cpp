@@ -32,6 +32,27 @@ card BlackjackDeck::drawCard() {
     }
 }
 
+std::string rankToString(RANK rank) {
+    switch (rank) {
+        case ACE: return "ACE";
+        case TWO: return "TWO";
+        case THREE: return "THREE";
+        case FOUR: return "FOUR";
+        case FIVE: return "FIVE";
+        case SIX: return "SIX";
+        case SEVEN: return "SEVEN";
+        case EIGHT: return "EIGHT";
+        case NINE: return "NINE";
+        case TEN: return "TEN";
+        case JACK: return "JACK";
+        case QUEEN: return "QUEEN";
+        case KING: return "KING";
+        default: return "UNKNOWN";
+    }
+}
+
+
+
 std::string suitToString(SUIT suit) {
     switch (suit) {
         case HEARTS:

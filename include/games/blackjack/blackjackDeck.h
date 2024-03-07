@@ -42,6 +42,8 @@ public:
     card drawCard();
 };
 
+std::string rankToString(RANK rank);
+
 std::string suitToString(SUIT suit);
 
 int calculateHandValue(const std::vector<card>& hand);

@@ -103,7 +103,7 @@ BlackjackResult deal(){
 
 /*
 TODO
-- if dealer one is Ace or 10, ask safety
-- player may double down
-- player may split
+- ask insurance
+- double down
+- split
 */
