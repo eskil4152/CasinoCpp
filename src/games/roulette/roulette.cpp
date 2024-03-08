@@ -84,5 +84,7 @@ void playRoulette(int min, int max){
         cout << "You lose.." << endl;
 
         play = keepPlayingInput();
+        
+        delete money;
     }   
 }

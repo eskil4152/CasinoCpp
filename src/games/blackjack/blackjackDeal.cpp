@@ -57,7 +57,8 @@ BlackjackResult deal(){
 
     draw = blackjackHit();
 
-    while (draw){
+    bool over21 = false;
+    while (draw && !over21){
         card newCard = deck.drawCard();
         playerCards.push_back(newCard);
 
@@ -65,10 +66,10 @@ BlackjackResult deal(){
         cout << "Your current hand value: " << calculateBlackjackHand(playerCards) << endl;
         
         if (calculateBlackjackHand(playerCards) >= 21){
-            break;
+            over21 = true;
+        } else {
+            draw = blackjackHit();
         }
-
-        draw = blackjackHit();
     }
 
     if (calculateBlackjackHand(playerCards) > 21){

@@ -50,6 +50,8 @@ void horseRacing(){
         }
         
         play = keepPlayingInput();
+
+        delete money;
     }    
 }
 

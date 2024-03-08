@@ -76,5 +76,7 @@ void playBlackjack(int table, int min, int max){
         }
     
         play = keepPlayingInput();
+
+        delete money;
     }
 }

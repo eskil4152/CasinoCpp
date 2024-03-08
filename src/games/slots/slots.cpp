@@ -73,6 +73,8 @@ void slotsMachine(int choice, int min, int mid, int max){
         }
     
         play = keepPlayingInput();
+
+        delete money;
     }
 }
 
