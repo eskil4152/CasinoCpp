@@ -1,6 +1,7 @@
 #include "games/blackjack/blackjackInputs.h"
 
 #include <iostream>
+#include <limits>
 
 using namespace std;
 int blackjackBetInput(int min, int max){

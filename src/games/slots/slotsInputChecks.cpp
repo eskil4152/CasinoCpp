@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <limits>
 
 #include "games/slots/slotsInputChecks.h"
 
