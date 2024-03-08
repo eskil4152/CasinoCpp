@@ -1,11 +1,8 @@
 #include <iostream>
 
+#include "games/poker/poker.h"
+
 using namespace std;
-void playCards(){
-    cout << "What table will you sit at?" << endl;
-    
-    cout << "Blackjack" << endl;
-    cout << "Poker" << endl;
-    cout << "" << endl;
-    cout << "" << endl;
+void poker(){
+    cout << "No poker dealers are available at this time. Sorry for the inconvenience" << endl;
 }

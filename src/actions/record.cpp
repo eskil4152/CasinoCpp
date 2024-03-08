@@ -13,6 +13,9 @@ void record(){
     cout << "Spent: " << *spent << endl;
     cout << "Earned: " << *earned << endl;
     cout << "\r\n";
+    
+    delete spent;
+    delete earned;
 
     cout << "Press any key to continue\n";
     getc(stdin);

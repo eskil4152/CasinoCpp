@@ -50,6 +50,9 @@ void horseRacing(){
         }
         
         play = keepPlayingInput();
+
+	delete[] horses;
+        delete money;
     }    
 }
 
@@ -74,6 +77,5 @@ bool race(Horse* horses, Horse selectedHorse){
         }
     }
 
-    cout << "No winner" << endl;
     return false;
 }

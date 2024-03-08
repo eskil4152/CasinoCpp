@@ -12,6 +12,7 @@ std::string getName(){
 
 void setName(std::string* name){
     user.setName(*name);
+    delete name;
 }
 
 double* getMoney(){

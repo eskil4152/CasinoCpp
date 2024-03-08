@@ -32,8 +32,8 @@ void blackjack(){
     }
 }
 
-void playBlackjack(int rank, int min, int max){
-    switch (rank){
+void playBlackjack(int table, int min, int max){
+    switch (table){
     case 1:
         cout << "Hello" << endl;
         break;
@@ -47,8 +47,8 @@ void playBlackjack(int rank, int min, int max){
     default:
         break;
     }
-    bool play = true;
 
+    bool play = true;
     while (play) {
         cout << "How much would you like to bet?" << endl;
         int bet = blackjackBetInput(min, max);
@@ -76,5 +76,7 @@ void playBlackjack(int rank, int min, int max){
         }
     
         play = keepPlayingInput();
+
+        delete money;
     }
 }

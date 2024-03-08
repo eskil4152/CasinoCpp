@@ -2,8 +2,11 @@
 
 ## TODO ##
 - [x] Add Slots
-- [ ] Add Horses
-- [ ] Add Blackjack
+- [x] Add Horses
+- [x] Add Blackjack
 - [ ] Add Roulette
+    - [ ] Roulette all bets
 - [ ] Add Poker
 - [ ] Add More
+
+- [ ] Fix input for checkInput.cpp

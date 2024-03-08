@@ -1,57 +1,39 @@
 #include <string>
 #include <iostream>
+#include <limits>
 
 #include "games/slots/slotsInputChecks.h"
 
 using namespace std;
 int slotsInput(){
-    string slotsSelectionString;
+    int choice;
+    do {
+        cout << "Enter your 1, 2 or 3: ";
+        cin >> choice;
 
-    while (1){
-        getline(cin, slotsSelectionString);
-
-        bool isAllDigits = true;
-        for (char c : slotsSelectionString){
-            if (!isdigit(c)) {
-                isAllDigits = false;
-            }
+        if (choice != 1 && choice != 2) {
+            cout << "Invalid choice. Please enter 1, 2 or 3." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         
-        if (isAllDigits && !slotsSelectionString.empty()) {
-            int result = stoi(slotsSelectionString);
-            if (result >= 1 && result <= 3) {
-                return result;
-            } else {
-                cout << "Please enter 1, 2 or 3" << endl;
-            }
-        } else {
-            cout << "Please enter a valid number" << endl;
-        }
-    }
+    } while (choice < 1 || choice > 3);
+
+    return choice;
 }
 
 int slotsBetInput(int option1, int option2, int option3){
-    string betString;
+    int choice;
+    do {
+        cin >> choice;
 
-    while (1){
-        getline(cin, betString);
-
-        bool isAllDigits = true;
-        for (char c : betString){
-            if (!isdigit(c)) {
-                isAllDigits = false;
-            }
+        if (choice != option1 && choice != option2 && choice != option3) {
+            cout << "Invalid choice. Please enter " << option1 << ", " << option2 << " or " << option3 << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         
-        if (isAllDigits && !betString.empty()) {
-            int result = stoi(betString);
-            if (result == option1 || result == option2 || result == option3) {
-                return result;
-            } else {
-                cout << "Please enter " << option1 << ", " << option2 << " or " << option3 << endl;
-            }
-        } else {
-            cout << "Please enter a valid number" << endl;
-        }
-    }
+    } while (choice != option1 && choice != option2 && choice != option3);
+
+    return choice;
 }
