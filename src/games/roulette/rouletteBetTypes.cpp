@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 #include "games/roulette/roulette.h"
 #include "games/roulette/rouletteBetTypes.h"

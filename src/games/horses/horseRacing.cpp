@@ -51,6 +51,7 @@ void horseRacing(){
         
         play = keepPlayingInput();
 
+	delete[] horses;
         delete money;
     }    
 }

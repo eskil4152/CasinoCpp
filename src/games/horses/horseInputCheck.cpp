@@ -20,23 +20,18 @@ int horseSelectionInput(){
 }
 
 int betInput(){
-    string betString;
-    int result = 0;
+    int bet;
+    
+    do {
+        cout << "Enter your bet: ";
+        cin >> bet;
 
-    while (1){
-        getline(cin, betString);
-
-        bool isAllDigits = true;
-        for (char c : betString){
-            if (!isdigit(c)) {
-                isAllDigits = false;
-            }
+        if (bet < 1 || bet > 100000) {
+            cout << "Invalid bet, try again (Max 100k)" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-        
-        if (isAllDigits && !betString.empty()) {
-            return stoi(betString);
-        } else {
-            cout << "Please enter a valid number" << endl;
-        }
-    }
+    } while (bet < 1 || bet > 100000);
+    
+    return bet;
 }

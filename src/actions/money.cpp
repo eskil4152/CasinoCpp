@@ -10,6 +10,8 @@ void money(){
     cout << name << "'s Account" << endl;
     cout << "Balance: $" << *money << endl;
     cout << "\r\n";
+    
+    delete money;
 
     cout << "Press any key to continue\n";
     getc(stdin);

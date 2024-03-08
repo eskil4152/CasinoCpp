@@ -57,8 +57,7 @@ void slotsMachine(int choice, int min, int mid, int max){
         double bet = (double)slotsBetInput(min, mid, max);
 
         double* money = getMoney();
-        if (*money < bet)
-        {
+        if (*money < bet){
             cout << "You are broke" << endl;
             sleep(1);
             return;
@@ -110,6 +109,8 @@ bool spin(int symbolsNum){
             }
         }
     }
+    
+    delete[] symbols;
     
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){

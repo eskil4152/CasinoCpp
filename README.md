@@ -8,3 +8,5 @@
     - [ ] Roulette all bets
 - [ ] Add Poker
 - [ ] Add More
+
+- [ ] Fix input for checkInput.cpp
