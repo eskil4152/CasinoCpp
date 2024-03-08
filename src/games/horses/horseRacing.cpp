@@ -76,6 +76,5 @@ bool race(Horse* horses, Horse selectedHorse){
         }
     }
 
-    cout << "No winner" << endl;
     return false;
 }

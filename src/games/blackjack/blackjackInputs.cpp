@@ -6,11 +6,13 @@ using namespace std;
 int blackjackBetInput(int min, int max){
     int bet;
     do {
-        cout << "Enter your bet (between " << min << " and " << max << "): ";
+        cout << "Enter your bet (between " << min <<  " and " << max << ")" << endl;
         cin >> bet;
 
         if (bet < min || bet > max) {
-            cout << "Invalid bet. Please enter a bet between " << min << " and " << max << ".\n";
+            cout << "Invalid bet. Please enter a bet between 1 and 3.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     } while (bet < min || bet > max);
 
@@ -25,6 +27,8 @@ int blackjackTableInput(){
 
         if (choice < 1 || choice > 3) {
             cout << "Invalid bet. Please enter a bet between 1 and 3.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     } while (choice < 1 || choice > 3);
 
@@ -37,11 +41,11 @@ bool blackjackHit(){
     do {
         cout << "Do you want to hit (h) or stand (s)" << endl;
         cin >> choice;
-        cin.clear();
 
-        if (choice != 'h' && choice != 'n') {
-            cout << "Invalid bet. Please enter a bet between 1 and 3.\n";
+        if (choice != 'h' && choice != 's') {
+            cout << "Please enter 'h' or 's'.\n";
         }
+        
     } while (choice != 'h' && choice != 's');
 
     if (choice == 'h'){

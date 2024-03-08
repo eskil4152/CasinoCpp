@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "games/roulette/roulette.h"
+#include "games/roulette/rouletteBetTypes.h"
 
 using namespace std;
 int numberBet(){
@@ -8,25 +9,23 @@ int numberBet(){
     int min = 0;
     int max = 36;
 
-    // COLOR, NUMBER, ODD/EVEN
-
     do {
         cout << "Enter a number to bet on (0 - 36)" << endl;
     
         cin >> selection;
         if (selection < min || selection > max) {
             cout << "Invalid selection." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
-    } while (selection < min || selection > max);
+    } while (selection < 0 || selection > 36);
        
     return selection;
 }
 
 COLOR colorBet(){
     int selection;
-    string selectionString;
-
     int min = 1;
     int max = 2;
 
@@ -36,6 +35,8 @@ COLOR colorBet(){
         cin >> selection;
         if (selection < min || selection > max) {
             cout << "Invalid selection." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
     } while (selection < min || selection > max);
@@ -59,6 +60,8 @@ ODD_EVEN oddEvenBet(){
         cin >> selection;
         if (selection < min || selection > max) {
             cout << "Invalid selection." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
     } while (selection < min || selection > max);
